@@ -54,6 +54,7 @@ public class LoadBalancerDemo {
 		/** No. of inputs  */
 		System.out.print("\nEnter number of inputs: ");
 		int noOfInputs = scan.nextInt();
+		validateInputNumber(noOfInputs);
 
 		System.out.println("\nPlease enter all "+ noOfInputs +" input strings:");
 		List<String> inputs = new ArrayList<>();
@@ -100,7 +101,8 @@ public class LoadBalancerDemo {
 	private static void getNumberOfBoxes(Scanner scan, List<Box> boxList) {
 		System.out.print("Please enter number of Boxes: ");
 		int noOfBoxes = scan.nextInt();
-		
+		validateInputNumber(noOfBoxes);
+
 		IntStream.range(0, noOfBoxes).forEach(i -> boxList.add(new Box()));
 		System.out.println("\nYou have selected " + noOfBoxes + " boxes.\n\n");
 	}
@@ -112,5 +114,16 @@ public class LoadBalancerDemo {
 	public static void print(List<Box> boxList) {
 		System.out.println("\n\nAfter load balancing....\n");
 		boxList.stream().forEach(box -> System.out.println("Box "+ (boxList.indexOf(box)+1) + " has => " +box.getBoxContent()));
+	}
+
+	/**
+	 * 
+	 * @param num
+	 */
+	public static void validateInputNumber(int num) {
+		if(num <= 0) {
+			System.out.println("\nInvalid, should be more than 0");
+			System.exit(1);
+		}
 	}
 }
